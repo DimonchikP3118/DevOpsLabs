@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  frontend:
+    image: nginx:1.25-alpine
+    networks:
+      - frontend_net
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      - database
+
+  database:
+    image: mysql:8.0
+    networks:
+      - database_net
+    env_file:
+      - db.env
+    ports:
+      - "127.0.0.1:3306:3306"
+
+networks:
+  frontend_net:
+    driver: bridge
+  database_net:
+    driver: bridge

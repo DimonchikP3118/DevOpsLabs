@@ -1,0 +1,27 @@
+# The good one (+ комменты с правками)
+FROM python:3.11-slim
+
+# рабочая директория
+WORKDIR /app
+
+# системные пакеты устанавливаем одним слоем, очищаем кэш
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# сначала копируем только зависимости для более эффективной работы кэша
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# затем копируем остальной код
+COPY . .
+
+# создаём непривилегированного пользователя и запускаемся от него
+RUN useradd -m appuser
+USER appuser
+
+CMD ["python", "main.py"]
+
+# готово
+
