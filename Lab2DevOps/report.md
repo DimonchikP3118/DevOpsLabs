@@ -449,7 +449,7 @@ Docker для каждой такой сети создаёт свой bridge-и
 
 Хороший Compose:
 
-![](./ComposeGOOD.jpg)
+![](./ComposeGood.jpg)
 
 
 
