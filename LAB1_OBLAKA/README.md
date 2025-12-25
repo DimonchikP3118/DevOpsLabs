@@ -27,14 +27,21 @@
 Исходные данные - файл, содержащий строки биллинга AWS с полями:
 
 Product Code — идентификатор AWS-сервиса
+
 Usage Type — тип потребления ресурса (с wildcard %)
+
 lineItem/Operation и lineItem/LineItemDescription — вспомогательные поля
+
 Используя официальную документацию AWS, каждая строка была классифицирована по 5-уровневой таксономии:
 
 IT Tower — высший функциональный уровень (например, Compute, Security)
+
 Service Family — категория внутри башни (например, Serverless, Virtual Machines)
+
 Service Type — конкретный AWS-сервис (например, AWS Lambda)
+
 Service Sub Type — режим или тип использования (например, Provisioned Concurrency)
+
 Service Usage Type — детальный тип потребления (например, GB-Second)
 
 Результат:
