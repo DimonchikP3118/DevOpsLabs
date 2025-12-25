@@ -1,6 +1,9 @@
-version: "3.9"
-
 services:
+  python-app:          
+    build: .
+    networks:
+      - frontend_net   
+
   frontend:
     image: nginx:1.25-alpine
     networks:
@@ -8,7 +11,7 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     depends_on:
-      - database
+      - python-app     
 
   database:
     image: mysql:8.0
